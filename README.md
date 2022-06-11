@@ -57,7 +57,7 @@ We support three kinds of method to specify the pruning layer:
     *  (epoch-50, (2, 4))
   
 ### We show examples of ``pruning strategy`` as follows:
-Example-1 
+#### Example-1 
 * Pruning schedule: ``1`` --> Pruning at the first epoch
 * Pruning layer: ``global`` --> Prune all the layers while overall the entire model achieve the density level specified by ``prune_rate_pattern``
 * Pruning rate or pattern: ``unstr`` ``0.9`` --> It use unstructure pruning and the density is 90%.
@@ -67,7 +67,7 @@ pruning_strategy = {1: {'method': 'unstr_global',
                         } 
                     }
 ```
-Example-2
+#### Example-2
 * Pruning schedule: ``10`` --> Pruning at the 10th epoch
 * Pruning layer: ``unified_local`` --> Prune all the layers to the same density level specified by ``prune_rate_pattern``
 * Pruning rate or pattern: ``str`` `` (2, 4)`` --> It use structure pruning and the pruning pattern is (2, 4).
@@ -77,7 +77,7 @@ pruning_strategy = {10: {'method': 'str_unified_local',
                         }
                     }
 ```
-Example-3
+#### Example-3
 
 At epoch-10:
   * Pruning schedule: ``10`` --> Pruning at the 10th epoch
@@ -98,7 +98,7 @@ pruning_strategy = {10: {'method': 'str_unified_local',
                     }
 ```
 
-Example-4
+#### Example-4
 * Pruning schedule: ``10`` --> Pruning at the 10th epoch
 * Pruning layer: ``local`` --> We will only prune a subset of the layers
 * Pruning rate or pattern: ``unstr``  --> We will use unstructure pruning
