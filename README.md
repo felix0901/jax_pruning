@@ -78,10 +78,12 @@ pruning_strategy = {10: {'method': 'str_unified_local',
                     }
 ```
 Example-3
+
 At epoch-10:
   * Pruning schedule: ``10`` --> Pruning at the 10th epoch
   * Pruning layer: ``unified_local`` --> Prune all the layers to the same density level specified by ``prune_rate_pattern``
   * Pruning rate or pattern: ``str`` `` (2, 4)`` --> It use structure pruning and the pruning pattern is (2, 4).
+  
 At epoch-20:
   * Pruning schedule: ``20`` --> Pruning at the 20th epoch
   * Pruning layer: ``unified_local`` --> Prune all the layers to the same density level specified by ``prune_rate_pattern``
