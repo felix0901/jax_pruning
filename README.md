@@ -212,7 +212,7 @@ To see the complete code, please see [mnist example](example/mnist/train.py).
   author = {Kao, Sheng-Chun},
   title = {{JAX-Pruning: A JAX implementation of structure and unstructure pruning}},
   url = {https://github.com/felix0901/jax_pruning},
-  version = {1.0.0},
+  version = {0.1},
   year = {2022}
 }
 ```
