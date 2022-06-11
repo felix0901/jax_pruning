@@ -144,6 +144,41 @@ They are two types of pruning pattern unstructure and structure, which correspon
 These two functions can be inserted in the model as shown in the follows
 ```python
 class CNN(nn.Module):
+  @nn.compact
+  def __call__(self, x):
+    x = nn.Conv(features=32, kernel_size=(3, 3))(x)
+    x = prune_act_unstruct(x, 0.9)    # Pruning x with unstructure sparsity with density of 90%
+    x = nn.Conv(features=64, kernel_size=(3, 3))(x)
+    x = prune_act_struct(x, (2, 4)) # Pruning x with structure sparsity with sparsity pattern of (2, 4), whose density is 50%
+    return x
+```
+
+------------
+
+# A complete example
+We grab an mnist example from [google/flax](https://github.com/google/flax/tree/main/examples/mnist) and inserted the above mentioned four functions in the code to demonstrate how to use them.
+
+A snap shot of code where we insert the pruning is as follows:
+
+At the training loops
+```python
+ for epoch in range(1, config.num_epochs + 1):
+    rng, input_rng = jax.random.split(rng)
+    state, train_loss, train_accuracy = train_epoch(state, train_ds,
+                                                    config.batch_size,
+                                                    input_rng)
+    state, mask_key = pruning_apply(state, mask_key)
+    mask_updated, mask_key = pruning(state, epoch, mask_key=mask_key, prune_strategy=pruning_strategy)
+    if mask_updated:
+      state, mask_key = pruning_apply(state, mask_key)
+    _, test_loss, test_accuracy = apply_model(state, test_ds['image'],
+                                              test_ds['label'])
+```
+
+At model definition
+```python
+```python
+class CNN(nn.Module):
   """A simple CNN model."""
 
   @nn.compact
@@ -163,12 +198,9 @@ class CNN(nn.Module):
     return x
 ```
 
-------------
 
-# A complete example
-We grab an mnist example from [google/flax](https://github.com/google/flax/tree/main/examples/mnist) and inserted the above mentioned four functions in the code to demonstrate how to use them.
-  
-Please see [mnist example](example/mnist/train.py)
+
+To see the complete code, please see [mnist example](example/mnist/train.py).
 
 
 -------------
@@ -176,7 +208,7 @@ Please see [mnist example](example/mnist/train.py)
 
 ## Citation
 ```
-@software{frame,
+@software{jax_pruning,
   author = {Kao, Sheng-Chun},
   title = {{JAX-Pruning: A JAX implementation of structure and unstructure pruning}},
   url = {https://github.com/felix0901/jax_pruning},
