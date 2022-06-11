@@ -56,7 +56,7 @@ We support three kinds of method to specify the pruning layer:
   * Example 2, assuming total training epochs=100 epochs. Dense training for 50 epochs, sparsify with structure pruning with sparsity pattern of (2, 4) at epoch-50, and fine-tuning for 50 epochs with the structured mask found at epoch-50 to recover the accuracy. 
     *  (epoch-50, (2, 4))
   
-### We show three examples of ``pruning strategy`` as follows:
+### We show examples of ``pruning strategy`` as follows:
 Example-1 
 * Pruning schedule: ``1`` --> Pruning at the first epoch
 * Pruning layer: ``global`` --> Prune all the layers while overall the entire model achieve the density level specified by ``prune_rate_pattern``
