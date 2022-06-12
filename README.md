@@ -205,16 +205,10 @@ To see the complete code, please see [mnist example](example/mnist/train.py).
 
 -------------
 
-## Contributors
-* Sheng-Chun (Felix) Kao
-* Suvinay Subramanian
-* ‪Amir Yazdanbakhs
-* Tushar Krishna
-
 ## Citation
 ```
 @software{jax_pruning,
-  author = {Kao, Sheng-Chun and Subramanian, Suvinay and Yazdanbakhs, Amir and Krishna, Tushar},
+  author = {Kao, Sheng-Chun},
   title = {{JAX-Pruning: A JAX implementation of structure and unstructure pruning}},
   url = {https://github.com/felix0901/jax_pruning},
   version = {0.1},
